@@ -28,8 +28,13 @@ function getResponse(request) {
 
 }
 
-function formatResponse(responseMessage) {
-    return responseMessage.join(',');
+function formatResponse(courses) {
+
+    if (courses.length == 0) {
+        return 'No courses found.'
+    }
+
+    return courses.join(',');
 }
 
 function getDegreeCourses(degree) {
