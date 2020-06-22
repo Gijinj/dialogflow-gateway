@@ -23,13 +23,13 @@ function getResponse(request) {
             break;
     }
 
-    return formatResponse(createResponse(responseMessage));
+    return createResponse(responseMessage);
 
 
 }
 
 function formatResponse(responseMessage) {
-    return responseMessage.join('\n');
+    return responseMessage.join(',');
 }
 
 function getDegreeCourses(degree) {
@@ -78,7 +78,7 @@ function createResponse(responseMessage) {
             {
                 text: {
                     text: [
-                        responseMessage
+                        formatResponse(responseMessage)
                     ]
                 }
             }
