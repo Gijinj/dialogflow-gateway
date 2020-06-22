@@ -46,7 +46,7 @@ function formatCourses(courses) {
         return '<p>' + item + '<br/>More details are <a href="'+ course.link+'" target="_blank">here</a>'+'</p>';
     }).join('');
 
-    return '<p>These are the courses: </p>' + message;
+    return '<p>'+ courses.length +' courses found: </p>' + message;
 }
 
 function formatCourse(course) {
@@ -54,7 +54,7 @@ function formatCourse(course) {
     
 
     var message = '<p>'+'The course details:'+'</p>'+
-                    '<p>'+ course.name + '<br/>'+ course.description + '</p>'+
+                    '<p><b>'+ course.name + '</b><br/>'+ course.description + '</p>'+
                         'More details are <a href="'+ course.link+'" target="_blank">here</a>'+'</p>';
 
 
