@@ -11,7 +11,7 @@ app.use(cors())
 
 app.use(express.static("static"))
 app.use(express.json());
-const port = 5000
+const PORT = process.env.PORT || 5000
 
 /*const options = {
 	key: fs.readFileSync('key.pem'),
@@ -46,4 +46,4 @@ app.post("/fulfillment/", async (req, res) => {
 	console.log('dialogflow gateway app listening on port 8080 !')
   })*/
 
-app.listen(port, "0.0.0.0", () => console.log("Dialogflow gateway app is running on port: ", port))
+app.listen(PORT, "0.0.0.0", () => console.log("Dialogflow gateway app is running on port: ", PORT))
