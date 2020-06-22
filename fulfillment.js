@@ -34,7 +34,11 @@ function formatResponse(courses) {
         return 'No courses found.'
     }
 
-    return courses.join(',');
+    var message = courses.map((item) => {
+        return '<p>' + item + '</p>'
+    }).join('');
+
+    return message;
 }
 
 function getDegreeCourses(degree) {
