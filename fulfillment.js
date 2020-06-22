@@ -23,13 +23,13 @@ function getResponse(request) {
             break;
     }
 
-    return createResponse(responseMessage);
+    return formatResponse(createResponse(responseMessage));
 
 
 }
 
 function formatResponse(responseMessage) {
-
+    return responseMessage.join('\n');
 }
 
 function getDegreeCourses(degree) {
