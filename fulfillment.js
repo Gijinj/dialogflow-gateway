@@ -54,8 +54,8 @@ function formatCourse(course) {
     
 
     var message = '<p>'+'The course details:'+'</p>'+
-                    '<p>'+ course.name + '<br/>'+ course.description +
-                        '<br/> More details are here:<a href="'+ course.link+'"/>'+'</p>';
+                    '<p>'+ course.name + '<br/>'+ course.description + '</p>'+
+                        'More details are <a href="'+ course.link+'" target="_blank">here</a>'+'</p>';
 
 
     return message;
