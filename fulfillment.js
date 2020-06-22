@@ -38,7 +38,11 @@ function formatCourses(courses) {
         return formatCourse(courses[0]);
     }
 
-    var message = courses.map((item) => {
+    var coursesNames = courses.map((item) => {
+        return item.name
+    })
+
+    var message = coursesNames.map((item) => {
         return '<p>' + item + '</p>'
     }).join('');
 
@@ -62,11 +66,7 @@ function getDegreeCourses(degree) {
         return item.degree == degree;
     });
 
-    var coursesNames = courses.map((item) => {
-        return item.name
-    })
-
-    return coursesNames;
+    return courses;
 
 }
 
@@ -75,11 +75,7 @@ function getCoursesByProgram(programType) {
         return item.programType == programType;
     });
 
-    var coursesNames = courses.map((item) => {
-        return item.name
-    })
-
-    return coursesNames;
+    return courses;
 
 }
 
@@ -88,11 +84,7 @@ function getCourses(degree, programType) {
         return item.degree == degree && item.programType == programType;
     });
 
-    var coursesNames = courses.map((item) => {
-        return item.name
-    })
-
-    return coursesNames;
+    return courses;
 
 }
 
