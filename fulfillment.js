@@ -28,6 +28,11 @@ function getResponse(request) {
 
 }
 
+function formatResponse(responseMessage)
+{
+    
+}
+
 function getDegreeCourses(degree) {
     var courses = coursesData.filter(function (item) {
         return item.degree == degree;
@@ -70,8 +75,12 @@ function getCourses(degree, programType) {
 
 function createResponse(responseMessage) {
     return {
-        queryResult: {
-            fulfillmentText: responseMessage
+        fulfillmentMessages: {
+            text: {
+                text:[
+                    responseMessage
+                ]
+            }
         }
     }
 }
