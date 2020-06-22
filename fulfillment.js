@@ -43,7 +43,7 @@ function formatCourses(courses) {
     })
 
     var message = coursesNames.map((item) => {
-        return '<p>' + item + '</p>'
+        return '<p>' + item + '<br/>More details are <a href="'+ course.link+'" target="_blank">here</a>'+'</p>';
     }).join('');
 
     return '<p>These are the courses: </p>' + message;
