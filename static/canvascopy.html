@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML5 Video Tiles with Drag and Drop using CANVAS Demo</title>
+    <style>
+      #box {
+        width: 648px;
+        height: 366px;
+        margin: 0px auto;
+      }
+      .tile {
+        border: 1px solid #fff;
+        float: left;
+      }
+    </style>
+    <style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+margin-left: 35%;
+}
+</style>
+  </head>
+  <body>
+    <h1>
+      Demo of splitting a video into HTML5 CANVAS Tiles with Drag and Drop
+    </h1>
+    <p>
+      Check out the source to see how it works.
+      <a
+        href="http://techslides.com/split-video-into-html5-canvas-tiles-with-drag-and-drop/"
+        >Back to Article</a
+      >
+    </p>
+
+    <div style="width:1600;height:900"
+      >
+      <video
+        id="source-vid"
+        autoplay
+        loop="true"
+        controls        
+      </video>
+    </div>
+    <div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'screen1')">screen1</button>
+  <button class="tablinks" onclick="openCity(event, 'screen2')">screen2</button>
+
+</div>
+
+<div id="screen1" class="tabcontent">
+</div>
+
+<div id="screen2" class="tabcontent">
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <script
+      type="text/javascript"
+      src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"
+    ></script>
+    <script>
+        const { desktopCapturer } = require('electron');
+vid = document.getElementById('source-vid');
+let stream;
+
+//let width=1000;
+//let height=400;
+(async function() {
+  desktopCapturer.getSources({ types: ['screen'] }).then(async screens => {
+    for (screen in screens) {
+      navigator.mediaDevices
+        .getUserMedia({
+          video: {
+            mandatory: {
+              chromeMediaSource: 'desktop',
+              minWidth:1600
+            }
+          }
+        })
+        .then(async stream => {            
+          vid.srcObject =await stream;
+          ROWS = 1;
+          COLS = 2;
+          vid.addEventListener("resize",()=>{
+            tiles(vid.videoWidth,vid.videoHeight, ROWS, COLS);
+            update(vid);
+
+            function update(video) {
+                tiles( vid.videoWidth,vid.videoHeight, ROWS, COLS, video);
+                setTimeout(function() {
+                update(video);
+                }, 33);
+            }
+
+          function tiles(w, h, r, c, source) {
+            var tileW = Math.round(w / c);
+            var tileH = Math.round(h / r);
+            width=tileW*1;
+            height=tileH*1;
+            for (var ri = 0; ri < r; ri += 1) {
+              for (var ci = 0; ci < c; ci += 1) {
+                //if source is not specified, just build canvas object, otherwise draw inside them
+                if (typeof source === 'undefined') {
+                  var tile = $(
+                    '<canvas class="tile" id="tile' +
+                      ri +
+                      ci +
+                      '" height="' +
+                     height+
+                      '" width="' +
+                      width +
+                      '"></canvas>'
+                  ).get(0);
+                  $('#screen'+(ci+1)).append(tile);
+                } else {
+                  var getit = $('#tile' + ri + ci).get(0);
+                  context = getit.getContext('2d');
+                  context.drawImage(
+                    source,
+                    ci * tileW,
+                    ri * tileH,
+                    tileW,
+                    tileH,
+                    0,
+                    0,
+                   width,
+                    height
+                  );
+                }
+              }
+            }
+          }
+        
+          },{once:true})
+});
+    }
+  });
+})();
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML5 Video Tiles with Drag and Drop using CANVAS Demo</title>
+    <style>
+      #box {
+        width: 648px;
+        height: 366px;
+        margin: 0px auto;
+      }
+      .tile {
+        border: 1px solid #fff;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Demo of splitting a video into HTML5 CANVAS Tiles with Drag and Drop
+    </h1>
+    <p>
+      Check out the source to see how it works.
+      <a
+        href="http://techslides.com/split-video-into-html5-canvas-tiles-with-drag-and-drop/"
+        >Back to Article</a
+      >
+    </p>
+
+    <div style="width:1600;height:900"
+      >
+      <video
+        id="source-vid"
+        autoplay
+        loop="true"
+        controls
+        
+      </video>
+    </div>
+    <div id="box"></div>
+    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <script
+      type="text/javascript"
+      src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"
+    ></script>
+    <!-- <script src="./canvas.js"></script> -->
+  </body>
+  <script type="text/javascript">
+  	body = document.getElementsByTagName('body')[0];
+template = document.createElement('template');
+template.innerHTML =
+  '<image src="https://icon-library.net/images/chatbot-icon/chatbot-icon-16.jpg"></image>';
+
+botIcon = template.content.firstChild;
+
+template2 = document.createElement('template');
+template2.innerHTML =
+  `<iframe class="bot" height="700" width="1750" src="https://console.dialogflow.com/api-client/demo/embedded/0a2e19a5-e538-4a1e-a141-2ffa2764b3a7" style="display:none"></iframe>`;
+bot = template2.content.firstChild;
+body.appendChild(botIcon);
+
+b = body.appendChild(bot);
+console.log(b.style.display)
+
+botIcon.addEventListener('click', toggle);
+
+function toggle() {
+  if ((b.style.display == 'block')) {
+    b.style.display = 'none';
+      	console.log(b.style.display)
+  }
+  else{
+  	console.log(b.style.display)
+  b.style.display = 'block';}
+}
+  </script>
+</html>
