@@ -38,12 +38,12 @@ function formatCourses(courses) {
         return formatCourse(courses[0]);
     }
 
-    var coursesNames = courses.map((item) => {
+    /*var coursesNames = courses.map((item) => {
         return item.name
-    })
+    })*/
 
-    var message = coursesNames.map((item) => {
-        return '<p>' + item + '<br/>More details are <a href="'+ course.link+'" target="_blank">here</a>'+'</p>';
+    var message = courses.map((course) => {
+        return '<p>' + course.name + '<br/>More details are <a href="'+ course.link+'" target="_blank">here</a>'+'</p>';
     }).join('');
 
     return '<p>'+ courses.length +' courses found: </p>' + message;
