@@ -84,15 +84,15 @@ function formatPrograms(values) {
     }
 
     var message = values.map((value) => {
-        return '<p>' + value + '</p>';
+        return '<br/>' + value;
     }).join('');
 
-    return message;
+    return 'We have programs in ' + message;
 }
 
 function getDegreeCourses(degree) {
     var courses = coursesData.filter(function (item) {
-        return item.degree == degree;
+        return equals(item.degree, degree);
     });
 
     return courses;
@@ -101,7 +101,7 @@ function getDegreeCourses(degree) {
 
 function getCoursesByProgram(programType) {
     var courses = coursesData.filter(function (item) {
-        return item.programType == programType;
+        return equals(item.programType, programType);
     });
 
     return courses;
@@ -110,7 +110,7 @@ function getCoursesByProgram(programType) {
 
 function getCourses(degree, programType) {
     var courses = coursesData.filter(function (item) {
-        return item.degree == degree && item.programType == programType;
+        return equals(item.degree, degree) && equals(item.programType, programType);
     });
 
     return courses;
@@ -137,6 +137,10 @@ function distinctOf(values) {
     return values.filter((value, index, self) => {
         return self.indexOf(value) === index;
     });
+}
+
+function equals(value1, value2) {
+    return value1.toString().toLowerCase() == value2.toString().toLowerCase()
 }
 
 
