@@ -1,5 +1,6 @@
 var coursesData = require("./courses.json")
 
+var outputContext = null;
 function getResponse(request) {
 
     // return JSON.stringify(request);
@@ -113,6 +114,10 @@ function getCourses(degree, programType) {
         return equals(item.degree, degree) && equals(item.programType, programType);
     });
 
+    if (courses.length == 1) {
+        outputContext = "course-selected";
+    }
+
     return courses;
 
 }
@@ -147,7 +152,7 @@ function equals(value1, value2) {
 
 
 function createResponse(responseMessage) {
-    return {
+    let response = {
         fulfillmentMessages: [
             {
                 text: {
@@ -158,6 +163,14 @@ function createResponse(responseMessage) {
             }
         ]
     }
+
+    if (outputContext != null) {
+        response.outputContexts = [{
+            name: outputContext
+        }]
+    }
+
+    return response;
 }
 
 module.exports = {
