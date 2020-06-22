@@ -11,7 +11,7 @@ app.use(cors())
 
 app.use(express.static("static"))
 app.use(express.json());
-const port = 80
+const port = 5000
 
 /*const options = {
 	key: fs.readFileSync('key.pem'),
