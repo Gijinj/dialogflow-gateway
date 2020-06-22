@@ -2,7 +2,7 @@ var coursesData = require("./courses.json")
 
 function getResponse(request) {
 
-  // return JSON.stringify(request);
+    // return JSON.stringify(request);
 
     var intent = request.queryResult.intent.name;
     var params = request.queryResult.parameters;
@@ -28,9 +28,8 @@ function getResponse(request) {
 
 }
 
-function formatResponse(responseMessage)
-{
-    
+function formatResponse(responseMessage) {
+
 }
 
 function getDegreeCourses(degree) {
@@ -75,13 +74,15 @@ function getCourses(degree, programType) {
 
 function createResponse(responseMessage) {
     return {
-        fulfillmentMessages: {
-            text: {
-                text:[
-                    responseMessage
-                ]
+        fulfillmentMessages: [
+            {
+                text: {
+                    text: [
+                        responseMessage
+                    ]
+                }
             }
-        }
+        ]
     }
 }
 
