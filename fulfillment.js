@@ -28,15 +28,31 @@ function getResponse(request) {
 
 }
 
-function formatResponse(courses) {
+function formatCourses(courses) {
 
     if (courses.length == 0) {
         return 'No courses found.'
     }
 
+    if (courses.length == 1) {
+        return formatCourse(courses[0]);
+    }
+
     var message = courses.map((item) => {
         return '<p>' + item + '</p>'
     }).join('');
+
+    return '<p>These are the courses: </p>' + message;
+}
+
+function formatCourse(course) {
+
+    
+
+    var message = '<p>'+'The course details:'+'</p>'+
+                    '<p>'+ course.name + '<br/>'+ course.description +
+                        '<br/> More details are here:<a href="'+ course.link+'"/>'+'</p>';
+
 
     return message;
 }
@@ -87,7 +103,7 @@ function createResponse(responseMessage) {
             {
                 text: {
                     text: [
-                        formatResponse(responseMessage)
+                        formatCourses(responseMessage)
                     ]
                 }
             }
