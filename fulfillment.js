@@ -165,8 +165,6 @@ function equals(value1, value2) {
 }
 
 
-
-
 function createResponse(responseMessage) {
     let response = {
         fulfillmentMessages: [
@@ -186,6 +184,7 @@ function createResponse(responseMessage) {
 
     if (courseSelected != null && outputContexts.length > 0) {
         response.outputContexts[0].parameters.courseId = courseSelected.id;
+        response.outputContexts[0].lifespanCount=2;
     }
 
     return response;
