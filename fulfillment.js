@@ -1,6 +1,6 @@
 var coursesData = require("./courses.json")
 
-var outputContext = null;
+var courseSelected = null;
 function getResponse(request) {
 
     // return JSON.stringify(request);
@@ -115,7 +115,7 @@ function getCourses(degree, programType) {
     });
 
     if (courses.length == 1) {
-        outputContext = "course-selected";
+        courseSelected = courses[0];
     }
 
     return courses;
@@ -164,9 +164,12 @@ function createResponse(responseMessage) {
         ]
     }
 
-    if (outputContext != null) {
+    if (courseSelected != null) {
         response.outputContexts = [{
-            name: outputContext
+            name: "course-selected",
+            parameters : {
+                courseId:courseSelected.id
+            }
         }]
     }
 
