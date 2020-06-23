@@ -1,12 +1,15 @@
 var coursesData = require("./courses.json")
 
 var courseSelected = null;
+var outputContexts = null;
+
 function getResponse(request) {
 
     // return JSON.stringify(request);
 
     var intent = request.queryResult.intent.name;
     var params = request.queryResult.parameters;
+    outputContexts = request.queryResult.outputContexts;
 
     let filteredObjects;
     let formatType = "course";
@@ -160,17 +163,16 @@ function createResponse(responseMessage) {
                         responseMessage
                     ]
                 }
-            }
-        ]
+            },
+
+        ],
+
+        outputContexts: outputContexts
     }
 
-    if (courseSelected != null) {
-        response.outputContexts = [{
-            name: "projects/acl-xhatmt/agent/sessions/b03bcff5-b06f-9253-ef18-9f85537918d3/contexts/course-selected",//course-selected",
-            parameters : {
-                courseId:courseSelected.id
-            }
-        }]
+
+    if (courseSelected != null && outputContexts.length >0) {
+        response.outputContexts[0].parameters.courseId = courseSelected.id;
     }
 
     return response;
