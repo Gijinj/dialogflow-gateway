@@ -18,37 +18,36 @@ function getResponse(request) {
     switch (intent) {
         case 'projects/acl-xhatmt/agent/intents/03272597-3cf6-41a6-ae5b-d4ce96847496': //Get specific degree courses
             filteredObjects = getDegreeCourses(params.degreetype.toLowerCase());
+            responseMessage = formatCourses(filteredObjects);
             break;
 
         case 'projects/acl-xhatmt/agent/intents/d411bdfa-61fa-4902-ab37-615f076ad200': //Get specific program courses
             filteredObjects = getCoursesByProgram(params.programtype.toLowerCase());
+            responseMessage = formatCourses(filteredObjects);
             break;
 
         case 'projects/acl-xhatmt/agent/intents/febeef3b-0a44-446c-a171-70b5de8bb306': //Get courses
             filteredObjects = getCourses(params.degreetype.toLowerCase(), params.programtype.toLowerCase());
+            responseMessage = formatCourses(filteredObjects);
             break;
 
         case 'projects/acl-xhatmt/agent/intents/4e610f80-0529-4258-835f-a2e7cae8d8d5': //Get all programs
             filteredObjects = getPrograms();
-            formatType = "program";
+            responseMessage = formatPrograms(filteredObjects);
             break;
 
         case 'projects/acl-xhatmt/agent/intents/3bd6fcd4-df61-4265-bda3-65109a0dc0c6': //Get Degrees
             filteredObjects = getDegrees();
-            formatType = "program";
+            responseMessage = formatPrograms(filteredObjects);
+            break;
+
+        case 'projects/acl-xhatmt/agent/intents/84597cf9-9620-4c2c-81f8-e800929240ef': //get fees
+            filteredObjects = getFees(params.courseId);
+            responseMessage = formatFees(filteredObjects);
             break;
     }
 
-    if (formatType == "course") {
-        responseMessage = formatCourses(filteredObjects);
-    }
-    else {
-        responseMessage = formatPrograms(filteredObjects);
-    }
-
     return createResponse(responseMessage);
-
-
 }
 
 function formatCourses(courses) {
@@ -92,6 +91,12 @@ function formatPrograms(values) {
     }).join('');
 
     return 'We have programs in ' + message;
+}
+
+function formatFees(course) {
+    var message = 'The course fee is:' + course.fees
+
+    return message;
 }
 
 function getDegreeCourses(degree) {
@@ -141,6 +146,14 @@ function getDegrees() {
     return distinctOf(degrees);
 }
 
+function getFees(courseId) {
+    var courses = coursesData.filter(function (item) {
+        return item.courseId = courseId;
+    });
+
+    return courses[0];
+}
+
 function distinctOf(values) {
     return values.filter((value, index, self) => {
         return self.indexOf(value) === index;
@@ -171,7 +184,7 @@ function createResponse(responseMessage) {
     }
 
 
-    if (courseSelected != null && outputContexts.length >0) {
+    if (courseSelected != null && outputContexts.length > 0) {
         response.outputContexts[0].parameters.courseId = courseSelected.id;
     }
 

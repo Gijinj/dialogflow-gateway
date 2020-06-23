@@ -6,7 +6,8 @@
 "credits":"64", 
 "link":"https://www.ace.edu/program/doctor-of-education-in-curriculum-and-instruction",
 "degree":"Doctoral",
-"programType":"Education"
+"programType":"Education",
+"fees":"$23,934"
 },
 {
 "id":2,
@@ -15,7 +16,8 @@
 "credits":"64",
 "link":"https://www.ace.edu/program/doctor-of-education-in-leadership",
 "degree":"Doctoral",
-"programType":"Leadership"
+"programType":"Leadership",
+"fees":"$23,800"
 },
 {
 "id":3,
@@ -24,7 +26,8 @@
 "credits":"34",
 "link":"https://www.ace.edu/program/educational-specialist-in-leadership",
 "degree":"Educational specialist",
-"programType":"Leadership"
+"programType":"Leadership",
+"fees":"$12,184"
 },
 {
 "id":4,
@@ -33,7 +36,8 @@
 "credits":"34",
 "link":"https://www.ace.edu/program/eds-in-public-health-education",
 "degree":"Educational specialist",
-"programType":"Education"
+"programType":"Education",
+"fees":"$23,900"
 },
 {
 "id":5,
@@ -42,7 +46,8 @@
 "credits":"35",
 "link":"https://www.ace.edu/program/master-of-education-in-educational-business-administration",
 "degree":"Masters",
-"programType":"Business"
+"programType":"Business",
+"fees":"$9,400"
 },
 {
 "id":6,
@@ -51,7 +56,8 @@
 "credits":"31",
 "link":"https://www.ace.edu/program/master-of-education-in-health-and-wellness-education",
 "degree":"Masters",
-"programType":"Healthcare"
+"programType":"Healthcare",
+"fees":"$9,500"
 },
 {
 "id":7,
@@ -60,5 +66,6 @@
 "credits":"36",
 "link":"https://www.ace.edu/program/bachelor-of-science-in-healthcare-administration",
 "degree":"Bachelor",
-"programType":"Healthcare"
+"programType":"Healthcare",
+"fees":"$9,510"
 }]
