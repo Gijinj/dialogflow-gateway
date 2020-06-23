@@ -1,6 +1,6 @@
 [
 {
-"id":1,
+"id":"1",
 "name":"Ed.D. in Curriculum and Instruction",
 "description":"This customizable degree is designed to help you advance your understanding of a wide range of curriculum development and instructional methods that can improve teaching and learning in diverse educational settings.",
 "credits":"64", 
@@ -10,7 +10,7 @@
 "fees":"$23,934"
 },
 {
-"id":2,
+"id":"2",
 "name":"Ed.D. in Leadership",
 "description":"The Doctor of Education in Leadership program is designed to help you advance your leadership and research skills within your chosen discipline, whatever that may be. Through a tailored approach to the dissertation process, you can complete the program in as little as three years.",
 "credits":"64",
@@ -20,7 +20,7 @@
 "fees":"$23,800"
 },
 {
-"id":3,
+"id":"3",
 "name":"Ed.S. in Leadership",
 "description":"The Educational Specialist in Leadership degree is designed for leaders who wish to pursue advanced training at the post-master’s level without having to complete a dissertation. You will learn advanced leadership skills and competencies that will make you a more effective leader.",
 "credits":"34",
@@ -30,7 +30,7 @@
 "fees":"$12,184"
 },
 {
-"id":4,
+"id":"4",
 "name":"Ed.S. in Public Health Education",
 "description":"The Education Specialist in Public Health Education degree is designed for educators and healthcare professionals who wish to address public health issues through education in local, national and international communities at the post-master’s level without having to complete a dissertation.",
 "credits":"34",
@@ -40,7 +40,7 @@
 "fees":"$23,900"
 },
 {
-"id":5,
+"id":"5",
 "name":"M.Ed. in Educational Business Administration",
 "description":"The Master of Education in Educational Business Administration program was designed for those who want to develop business and leadership skills in an educational setting. Framed by the standards from the Association of School Business Officials International (ASBO), the program prepares strategic leaders for senior administrative positions in a variety of settings including public, charter, and private schools, as well as community colleges and other educational institutions or learning organizations.",
 "credits":"35",
@@ -50,7 +50,7 @@
 "fees":"$9,400"
 },
 {
-"id":6,
+"id":"6",
 "name":"M.Ed. in Health and Wellness Education",
 "description":"degree will help you teach others about healthy life choices. You will learn about a wide range of health topics, and how to assess a community or an organization to determine health education priorities. Once you graduate, you will be prepared to take the Certified Health Education Specialist (CHES) exam.",
 "credits":"31",
@@ -60,7 +60,7 @@
 "fees":"$9,500"
 },
 {
-"id":7,
+"id":"7",
 "name":"B.S. in Healthcare Administration",
 "description":"Designed for individuals with an associate's degree or some college credit, this bachelor’s degree completion program gives you a direct pathway toward earning a bachelor’s degree.* You will learn the skills necessary to work in growing field of healthcare administration.",
 "credits":"36",

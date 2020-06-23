@@ -148,7 +148,7 @@ function getDegrees() {
 
 function getFees(courseId) {
     var courses = coursesData.filter(function (item) {
-        return item.courseId = courseId;
+        return item.id == courseId;
     });
 
     return courses[0];
