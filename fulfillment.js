@@ -166,7 +166,7 @@ function createResponse(responseMessage) {
 
     if (courseSelected != null) {
         response.outputContexts = [{
-            name: "course-selected",
+            name: "projects/acl-xhatmt/agent/sessions/b03bcff5-b06f-9253-ef18-9f85537918d3/contexts/course-selected",//course-selected",
             parameters : {
                 courseId:courseSelected.id
             }
