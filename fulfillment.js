@@ -104,6 +104,7 @@ function getDegreeCourses(degree) {
         return equals(item.degree, degree);
     });
 
+    setCourseContext(courses);
     return courses;
 
 }
@@ -113,6 +114,7 @@ function getCoursesByProgram(programType) {
         return equals(item.programType, programType);
     });
 
+    setCourseContext(courses);
     return courses;
 
 }
@@ -122,12 +124,16 @@ function getCourses(degree, programType) {
         return equals(item.degree, degree) && equals(item.programType, programType);
     });
 
-    if (courses.length == 1) {
-        courseSelected = courses[0];
-    }
+    setCourseContext(courses);
 
     return courses;
 
+}
+
+function setCourseContext(courses) {
+    if (courses.length == 1) {
+        courseSelected = courses[0];
+    }
 }
 
 function getPrograms() {
@@ -183,8 +189,25 @@ function createResponse(responseMessage) {
 
 
     if (courseSelected != null && outputContexts.length > 0) {
-        response.outputContexts[0].parameters.courseId = courseSelected.id;
-        response.outputContexts[0].lifespanCount=2;
+
+        let contextName = "projects/acl-xhatmt/agent/sessions/b03bcff5-b06f-9253-ef18-9f85537918d3/contexts/course-selected";
+        let courseSelectedContext = outputContexts.find((context) => {
+            context.name == contextName
+        });
+
+        if (courseSelectedContext == null) {
+            courseSelectedContext = {
+                name: contextName,
+                parameters: {
+                }
+            }
+
+            outputContexts.push(courseSelectedContext);
+
+        }
+
+        courseSelectedContext.parameters.courseId = courseSelected.id;
+        courseSelectedContext.lifespanCount = 2;
     }
 
     return response;
