@@ -6,7 +6,7 @@ const path = require("path")
 const dialog = require("./x.js")
 const cors = require('cors');
 const fulfillment = require("./fulfillment.js");
-
+const knowledgeBase = require("./knowledgeBase.js");
 app.use(cors())
 
 app.use(express.static("static"))
@@ -35,6 +35,14 @@ app.get("/agent", async (req, res) => {
 
 app.post("/fulfillment/", async (req, res) => {
 	res.send(fulfillment.getResponse(req.body));
+})
+
+app.get("/knowledgebase/", async (req, res) => {
+	res.send(await knowledgeBase.getDocument());
+})
+
+app.post("/knowledgebase/", async (req, res) => {
+	res.send(await knowledgeBase.createDocument(req.body));
 })
 
 /*https.createServer(//{

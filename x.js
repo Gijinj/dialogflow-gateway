@@ -3,10 +3,11 @@
  */
 // export GOOGLE_APPLICATION_CREDENTIALS="C:\Users\alang\Download\personalchatbot-256109-2498b53df657.json"
 // $env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\alang\Download\personalchatbot-256109-2498b53df657.json"
+const config = require("./config.json");
 GOOGLE_APPLICATION_CREDENTIALS='./config.json'
 process.env["GOOGLE_APPLICATION_CREDENTIALS"]=GOOGLE_APPLICATION_CREDENTIALS
 // projectId: ID of the GCP project where Dialogflow agent is deployed
-const projectId = 'acl-xhatmt';
+const projectId = config.project_id;
 
 // sessionId: Random number or hashed user identifier
 // const sessionId = "123456";
