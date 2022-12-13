@@ -13,7 +13,7 @@
     "@google-cloud/dialogflow": "^2.0.0",
     "cors": "^2.8.5",
     "dialogflow": "^0.12.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "google-protobuf": "^3.10.0",
     "nodemon": "^1.19.4",
     "standard": "^14.3.1"
